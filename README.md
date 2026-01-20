@@ -1,6 +1,6 @@
-# WMI vs Master Comparison
+# [modelplayoffs.com](https://modelplayoffs.com))
 
-Comparing comma's model reports between Master and WMI branche
+Comparing comma's model reports between Master and WMI branch
 
 ## Quick Start
 
