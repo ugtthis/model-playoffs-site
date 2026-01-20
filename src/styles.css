@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: '"JetBrains Mono"', monospace;
+  --color-phosphor-amber: #ffb000;
+  --color-phosphor-green: #33ff33;
+  --color-phosphor-dim: #222222;
+  --color-phosphor-bg: #0a0a0a;
+  --color-border-subtle: #333333;
+}
+
+body {
+  font-family: var(--font-mono);
+  background-color: var(--color-phosphor-bg);
+  color: var(--color-phosphor-amber);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+.glow-text {
+  text-shadow: 0 0 8px rgba(255, 176, 0, 0.4);
+}
+
+/* ASCII Border */
+.ascii-box {
+  border: 1px solid var(--color-border-subtle);
+  position: relative;
+}
+
+.ascii-box-inner {
+  border: 1px dashed var(--color-phosphor-dim);
+  position: relative;
+  background-color: rgba(29, 29, 29, 0.378);
+}
+
+/* CRT Screen Effects */
+body::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 100;
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Vignette */
+body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: 101;
+  pointer-events: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th,
+td {
+  border: 1px dashed var(--color-border-subtle);
+  padding: 0.5rem;
+}
+
+thead th {
+  border-bottom: 1px solid var(--color-border-subtle);
+  text-align: left;
+  color: var(--color-phosphor-amber);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgba(255, 176, 0, 0.03);
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Split Table Enhancements */
+.terminal-table {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--color-border-subtle);
+}
+
+/* Mobile Optimization for Split Tables */
+@media (max-width: 1280px) {
+  .terminal-table {
+    font-size: 11px;
+  }
+  
+  .terminal-table th,
+  .terminal-table td {
+    padding: 0.4rem 0.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .terminal-table {
+    font-size: 10px;
+  }
+  
+  .terminal-table th,
+  .terminal-table td {
+    padding: 0.3rem 0.2rem;
+  }
+}
+
+.label-sys {
+  color: var(--color-phosphor-green);
+  font-weight: bold;
+}

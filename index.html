@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wmi vs master</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="antialiased min-h-screen p-4 md:p-8">
+
+    <header class="max-w-7xl mx-auto mb-8">
+        <div class="text-[10px] opacity-60 mb-2"><span id="timestamp">Last update: SYNCING...</span></div>
+        <h1 class="text-xl md:text-2xl font-bold tracking-tight glow-text mb-3">master vs wmi_driving</h1>
+        <div class="flex items-center gap-3 text-[10px]">
+            <span class="opacity-60">data sources:</span>
+            <a href="#" id="master-link" target="_blank" class="opacity-50 hover:opacity-100 transition-opacity">[ master ]</a>
+            <a href="#" id="wmi-link" target="_blank" class="opacity-50 hover:opacity-100 transition-opacity">[ wmi_driving ]</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto space-y-12">
+        <section class="ascii-box bg-black/40 p-4 md:p-6">
+            <div id="summary-section">
+                <!-- Engagement rate analysis and segment analysis tables dynamically rendered here -->
+            </div>
+        </section>
+        <section id="comparison-section" class="space-y-16">
+            <!-- Comparison tables dynamically rendered here -->
+        </section>
+    </main>
+
+    <footer class="max-w-7xl mx-auto mt-24 py-8 border-t border-phosphor-dim border-dashed text-center text-[10px] opacity-40">
+        <p>Chat about the models on 
+            <a href="https://discord.com/channels/469524606043160576/616456819027607567" target="_blank" class="underline">Discord</a>
+        </p>
+    </footer>
+
+    <script type="module" src="/src/app.ts"></script>
+</body>
+
+</html>
