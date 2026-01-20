@@ -1,4 +1,4 @@
-# [modelplayoffs.com](https://modelplayoffs.com))
+# [modelplayoffs.com](https://modelplayoffs.com)
 
 Comparing comma's model reports between Master and WMI branch
 
