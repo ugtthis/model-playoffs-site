@@ -188,7 +188,7 @@ function renderEngagementRateAnalysis(master: ReportData, wmi: ReportData) {
                 <div class="mb-6 bg-black/40 p-3">
                     <div class="flex items-center gap-2">
                         <span class="text-[10px] opacity-50 tracking-widest uppercase">Overall Engagement Rate</span>
-                        <span class="text-[10px] opacity-30">·</span>
+                        <span class="text-[10px] opacity-50">·</span>
                         <span class="text-sm font-bold glow-text tracking-wider">BY ${metricType}</span>
                     </div>
                 </div>
@@ -209,7 +209,7 @@ function renderEngagementRateAnalysis(master: ReportData, wmi: ReportData) {
                         <!-- Master -->
                         <div class="space-y-1 text-center pb-2 pr-6 border-r border-dashed border-phosphor-dim">
                             <div class="text-lg md:text-xl opacity-70 font-bold mb-3 tracking-widest glow-text">MASTER</div>
-                            <div class="text-4xl font-bold tabular-nums ${masterOverall > wmiOverall ? 'glow-text' : 'opacity-60'}">${masterOverall.toFixed(1)}<span class="text-xl opacity-40">%</span></div>
+                            <div class="text-4xl font-bold tabular-nums ${masterOverall > wmiOverall ? 'glow-text' : 'opacity-60'}">${masterOverall.toFixed(1)}<span class="text-xl opacity-50">%</span></div>
                             <div class="text-xs opacity-60 mt-2 font-medium leading-tight">${formatDetailText(masterOverallDetail)}</div>
                         </div>
                         
@@ -233,10 +233,10 @@ function renderEngagementRateAnalysis(master: ReportData, wmi: ReportData) {
                     <table class="terminal-table text-[10px] w-full">
                         <thead>
                             <tr>
-                                <th class="text-left py-1 px-2 opacity-40 text-[8px] uppercase tracking-wider">Mode</th>
-                                <th class="text-center py-1 px-2 opacity-40 w-24 text-[8px] uppercase">Master</th>
-                                <th class="text-center py-1 px-2 opacity-40 w-16 text-[8px] uppercase">Δ</th>
-                                <th class="text-center py-1 px-2 opacity-60 w-24 text-[8px] uppercase">WMI</th>
+                                <th class="text-left py-1 px-2 opacity-50 text-[8px] uppercase tracking-wider">Mode</th>
+                                <th class="text-center py-1 px-2 opacity-50 w-24 text-[8px] uppercase">Master</th>
+                                <th class="text-center py-1 px-2 opacity-50 w-16 text-[8px] uppercase">Δ</th>
+                                <th class="text-center py-1 px-2 opacity-50 w-24 text-[8px] uppercase">WMI</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -284,7 +284,7 @@ function renderComparisonRow(label: string, masterVal: number, wmiVal: number, m
     
     return `
         <tr class="hover:bg-phosphor-amber/5 transition-colors">
-            <td class="py-2 px-2 font-bold opacity-70">${label}</td>
+            <td class="py-2 px-2 font-bold opacity-75">${label}</td>
             <td class="text-center tabular-nums">
                 ${masterDetail 
                     ? `<div class="font-bold ${diff.masterClass}">${masterDisplay}</div><div class="text-[8px] opacity-50 mt-0.5 leading-tight">${formatDetailText(masterDetail)}</div>`
@@ -319,10 +319,10 @@ function renderSegmentAnalysis(section: HTMLElement, master: ReportData, wmi: Re
     tableEl.innerHTML = `
         <thead>
             <tr>
-                <th class="text-left py-2 opacity-40 text-[9px] uppercase tracking-wider">Mode</th>
-                <th class="text-center py-2 opacity-60 uppercase text-[9px] w-24">Master</th>
-                <th class="text-center py-2 opacity-40 uppercase text-[9px] w-16">Δ</th>
-                <th class="text-center py-2 opacity-60 uppercase text-[9px] w-24">WMI</th>
+                <th class="text-left py-2 opacity-50 text-[9px] uppercase tracking-wider">Mode</th>
+                <th class="text-center py-2 opacity-50 uppercase text-[9px] w-24">Master</th>
+                <th class="text-center py-2 opacity-50 uppercase text-[9px] w-16">Δ</th>
+                <th class="text-center py-2 opacity-50 uppercase text-[9px] w-24">WMI</th>
             </tr>
         </thead>
         <tbody>
@@ -331,7 +331,7 @@ function renderSegmentAnalysis(section: HTMLElement, master: ReportData, wmi: Re
         </tbody>
         <tfoot>
             <tr class="border-t-2 border-phosphor-amber/40">
-                <td class="py-2 font-bold opacity-80 uppercase text-[10px]">Total Segments</td>
+                <td class="py-2 font-bold opacity-75 uppercase text-[10px]">Total Segments</td>
                 <td class="text-center tabular-nums"><span class="font-bold ${totalDiff.masterClass}">${master.segments.total.toLocaleString()}</span></td>
                 <td class="text-center text-neutral-500 font-bold tabular-nums text-[10px]">${totalDiff.diff !== 0 ? totalDiff.diffPrefix + totalDiff.diff.toLocaleString() : '—'}</td>
                 <td class="text-center tabular-nums"><span class="font-bold ${totalDiff.wmiClass}">${wmi.segments.total.toLocaleString()}</span></td>
@@ -348,9 +348,9 @@ function renderErrorRow(rowId: string, masterVal: string): string {
     
     return `
         <tr class="hover:bg-phosphor-amber/5 transition-colors bg-red-500/10">
-            <td class="py-2 font-bold opacity-80 text-[10px] leading-tight">${formattedRowId.toUpperCase()}</td>
+            <td class="py-2 font-bold opacity-75 text-[10px] leading-tight">${formattedRowId.toUpperCase()}</td>
             <td class="text-center tabular-nums">${formatValueCell(masterVal, 'opacity-60')}</td>
-            <td class="text-center text-[10px]"><span class="opacity-30"></span></td>
+            <td class="text-center text-[10px]"><span class="opacity-50"></span></td>
             <td class="text-center text-red-500 text-[8px] bg-red-900/30">NO MATCH</td>
         </tr>
     `;
@@ -400,7 +400,7 @@ function renderAllComparisonTables(master: ReportData, wmi: ReportData) {
             const modeHeader = document.createElement('div');
             modeHeader.className = 'flex items-center gap-2 pb-2 border-b border-dashed border-phosphor-dim';
             modeHeader.innerHTML = `
-                <span class="text-[10px] opacity-40 uppercase tracking-wider">Mode:</span>
+                <span class="text-[10px] opacity-50 uppercase tracking-wider">Mode:</span>
                 <span class="text-sm font-bold glow-text">${metricName.toUpperCase()}</span>
             `;
             tableWrapper.appendChild(modeHeader);
@@ -411,10 +411,10 @@ function renderAllComparisonTables(master: ReportData, wmi: ReportData) {
             let theadHTML = `
                 <thead>
                     <tr>
-                        <th class="text-left py-2 opacity-40 text-[9px] uppercase tracking-wider">${masterTable.headers[0]}</th>
-                        <th class="text-center py-2 opacity-60 uppercase text-[9px] w-24">Master</th>
-                        <th class="text-center py-2 opacity-40 uppercase text-[9px] w-16">Δ</th>
-                        <th class="text-center py-2 opacity-60 uppercase text-[9px] w-24">WMI</th>
+                        <th class="text-left py-2 opacity-50 text-[9px] uppercase tracking-wider">${masterTable.headers[0]}</th>
+                        <th class="text-center py-2 opacity-50 uppercase text-[9px] w-24">Master</th>
+                        <th class="text-center py-2 opacity-50 uppercase text-[9px] w-16">Δ</th>
+                        <th class="text-center py-2 opacity-50 uppercase text-[9px] w-24">WMI</th>
                     </tr>
                 </thead>
             `;
@@ -459,7 +459,7 @@ function renderAllComparisonTables(master: ReportData, wmi: ReportData) {
                 
                 tbodyHTML += `
                     <tr class="hover:bg-phosphor-amber/5 transition-colors">
-                        <td class="py-2 font-bold opacity-80 text-[10px] leading-tight">${formattedRowId.toUpperCase()}</td>
+                        <td class="py-2 font-bold opacity-75 text-[10px] leading-tight">${formattedRowId.toUpperCase()}</td>
                         <td class="text-center tabular-nums">${formatValueCell(masterVal, masterClass)}</td>
                         <td class="text-center text-[10px]">${deltaHTML}</td>
                         <td class="text-center tabular-nums">${formatValueCell(wmiVal, wmiClass)}</td>
