@@ -94,8 +94,8 @@ interface DiffResult {
 function calculateDiff(masterVal: number, wmiVal: number): DiffResult {
     const diff = wmiVal - masterVal;
     const diffPrefix = diff > 0 ? '+' : '';
-    const masterClass = masterVal > wmiVal ? 'winner opacity-80' : 'opacity-60';
-    const wmiClass = wmiVal > masterVal ? 'winner opacity-90' : 'opacity-60';
+    const masterClass = masterVal > wmiVal ? 'opacity-80' : 'opacity-60';
+    const wmiClass = wmiVal > masterVal ? 'opacity-90' : 'opacity-60';
     
     return { diff, diffPrefix, masterClass, wmiClass };
 }
