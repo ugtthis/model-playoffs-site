@@ -3,7 +3,6 @@
 @theme {
   --font-mono: '"JetBrains Mono"', monospace;
   --color-phosphor-amber: #ffb000;
-  --color-phosphor-green: #33ff33;
   --color-phosphor-dim: #222222;
   --color-phosphor-bg: #0a0a0a;
   --color-border-subtle: #333333;
@@ -112,9 +111,4 @@ tbody tr:nth-child(even) {
   .terminal-table td {
     padding: 0.3rem 0.2rem;
   }
-}
-
-.label-sys {
-  color: var(--color-phosphor-green);
-  font-weight: bold;
 }

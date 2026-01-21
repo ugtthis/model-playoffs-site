@@ -87,7 +87,6 @@ function convertToNum(str: string): number | null {
 interface DiffResult {
     diff: number;
     diffPrefix: string;
-    diffColor: string;
     masterClass: string;
     wmiClass: string;
 }
@@ -95,11 +94,10 @@ interface DiffResult {
 function calculateDiff(masterVal: number, wmiVal: number): DiffResult {
     const diff = wmiVal - masterVal;
     const diffPrefix = diff > 0 ? '+' : '';
-    const diffColor = diff > 0 ? 'label-sys' : (diff < 0 ? 'text-red-500' : 'opacity-40');
     const masterClass = masterVal > wmiVal ? 'winner opacity-80' : 'opacity-60';
     const wmiClass = wmiVal > masterVal ? 'winner opacity-90' : 'opacity-60';
     
-    return { diff, diffPrefix, diffColor, masterClass, wmiClass };
+    return { diff, diffPrefix, masterClass, wmiClass };
 }
 
 function formatDetailText(detail: string): string {
@@ -200,8 +198,8 @@ function renderEngagementRateAnalysis(master: ReportData, wmi: ReportData) {
                 <div class="pb-3 border-b border-dashed border-phosphor-dim">
                     <!-- Diff Badge at Top -->
                     <div class="flex justify-center mb-3">
-                        <div class="inline-flex items-center px-3 py-1 border border-dashed ${overallDiff.diffColor} bg-black/40">
-                            <span class="text-base font-bold ${overallDiff.diffColor} tabular-nums">
+                        <div class="inline-flex items-center px-3 py-1 border border-dashed border-neutral-500 bg-black/40">
+                            <span class="text-base font-bold text-neutral-500 tabular-nums">
                                 ${overallDiff.diffPrefix}${overallDiff.diff.toFixed(1)}%
                             </span>
                         </div>
@@ -293,7 +291,7 @@ function renderComparisonRow(label: string, masterVal: number, wmiVal: number, m
                     ? `<div class="font-bold ${diff.masterClass}">${masterDisplay}</div><div class="text-[8px] opacity-50 mt-0.5 leading-tight">${formatDetailText(masterDetail)}</div>`
                     : `<span class="font-bold ${diff.masterClass}">${masterDisplay}</span>`}
             </td>
-            <td class="text-center ${diff.diffColor} font-bold tabular-nums text-[10px]">
+            <td class="text-center text-neutral-500 font-bold tabular-nums text-[10px]">
                 ${diff.diff !== 0 ? diffDisplay : '—'}
             </td>
             <td class="text-center tabular-nums">
@@ -336,7 +334,7 @@ function renderSegmentAnalysis(section: HTMLElement, master: ReportData, wmi: Re
             <tr class="border-t-2 border-phosphor-amber/40">
                 <td class="py-2 font-bold opacity-80 uppercase text-[10px]">Total Segments</td>
                 <td class="text-center tabular-nums"><span class="font-bold ${totalDiff.masterClass}">${master.segments.total.toLocaleString()}</span></td>
-                <td class="text-center ${totalDiff.diffColor} font-bold tabular-nums text-[10px]">${totalDiff.diff !== 0 ? totalDiff.diffPrefix + totalDiff.diff.toLocaleString() : '—'}</td>
+                <td class="text-center text-neutral-500 font-bold tabular-nums text-[10px]">${totalDiff.diff !== 0 ? totalDiff.diffPrefix + totalDiff.diff.toLocaleString() : '—'}</td>
                 <td class="text-center tabular-nums"><span class="font-bold ${totalDiff.wmiClass}">${wmi.segments.total.toLocaleString()}</span></td>
             </tr>
         </tfoot>
@@ -439,7 +437,7 @@ function renderAllComparisonTables(master: ReportData, wmi: ReportData) {
                 const masterNumVal = convertToNum(masterVal);
                 const wmiNumVal = convertToNum(wmiVal);
 
-                let deltaHTML = '<span class="opacity-30">—</span>';
+                let deltaHTML = '<span class="text-neutral-500">—</span>';
                 let masterClass = "opacity-60";
                 let wmiClass = "opacity-60";
 
@@ -448,11 +446,12 @@ function renderAllComparisonTables(master: ReportData, wmi: ReportData) {
                     masterClass = diffResult.masterClass;
                     wmiClass = diffResult.wmiClass;
 
+                    // Only show number if diff is significant
                     if (Math.abs(diffResult.diff) > 0.0001) {
                         const isPercentage = masterVal.includes('%') || wmiVal.includes('%');
-                        const percentSign = isPercentage ? '%' : '';
                         const formattedDiff = formatDecimalTrimZeros(diffResult.diff, 4);
-                        deltaHTML = `<span class="${diffResult.diffColor} font-bold tabular-nums">${diffResult.diffPrefix}${formattedDiff}${percentSign}</span>`;
+                        const percentSign = isPercentage ? '%' : '';
+                        deltaHTML = `<span class="text-neutral-500 font-bold tabular-nums">${diffResult.diffPrefix}${formattedDiff}${percentSign}</span>`;
                     }
                 }
 
