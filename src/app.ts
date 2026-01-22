@@ -250,9 +250,18 @@ function renderEngagementRateAnalysis(master: ReportData, wmi: ReportData) {
     };
 
     summarySection.innerHTML = `
-        <div class="pb-4 mb-10 border-b border-dashed border-phosphor-amber">
+        <div class="pb-4 border-b border-dashed border-phosphor-amber">
             <h2 class="glow-text text-lg md:text-xl font-bold tracking-wider">ENGAGEMENT RATE ANALYSIS</h2>
         </div>
+        
+        <!-- Selection Bias Note -->
+        <div class="mb-10 mt-4 bg-amber-500/10 border-l-4 border-amber-500/50 p-3">
+            <p class="text-[10px] leading-relaxed text-amber-500/80">
+                <span class="font-bold uppercase tracking-wider">Note:</span>
+                 Engagement rate comparison results should be interpreted with caution due to selection bias. Users exploring WMI tend to be more engaged than those running nightly builds.
+            </p>
+        </div>
+        
         <div class="space-y-8">
             <!-- Primary Engagement Metrics -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
