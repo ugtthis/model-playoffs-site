@@ -132,7 +132,7 @@ function generateStringExample(masterOverall: number, wmiOverall: number, contex
     const masterEngaged = Math.round(scale * (masterOverall / 100));
     const wmiEngaged = Math.round(scale * (wmiOverall / 100));
     
-    return `<strong>Example:</strong> On a ${tripDesc}, Master keeps OpenPilot engaged for about ${masterEngaged} ${unit}, WMI keeps it engaged for about ${wmiEngaged} ${unit}.`;
+    return `<strong>Example:</strong> On a ${tripDesc}, Master keeps openpilot engaged for about ${masterEngaged} ${unit}, WMI keeps it engaged for about ${wmiEngaged} ${unit}.`;
 }
 
 function formatRelativeTime(timestamp: string): string {
